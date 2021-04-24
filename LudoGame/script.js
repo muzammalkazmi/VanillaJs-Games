@@ -1,17 +1,33 @@
 //Accessing DOM Elements
-const totalOne = document.getElementById('score--0').innerText
-const totalTwo = document.getElementById('score--1').innerText
-const runningOne = document.getElementById('current--0').innerText
-const runningTwo = document.getElementById('current--1').innerText
+const holdOne = document.getElementById('score--0')
+const holdTwo = document.getElementById('score--1')
+var runningOne = document.getElementById('current--0')
+var runningTwo = document.getElementById('current--1')
 var rolBtn = document.getElementById('rolBtn')
+const showDice = document.querySelector('.dice')
 rolBtn.addEventListener('click', init)
-init()
+var roundScore, activePlayer;
+roundScore = 1
+    // var activePlayer = 1
+document.getElementById('score-0').textContent = '0'
+document.getElementById('current-0').textContent = '0'
+document.getElementById('score--1').textContent = '0'
+document.getElementById('current-1').textContent = '0'
 
 function init() {
-    totalOne.innerText = 0;
-    totalTwo.innerText = 0;
-    runningOne.innerText = 0;
-    runningTwo.innerText = 0
     var digit = Math.floor(Math.random() * 6) + 1
     console.log(digit)
+    showDice.src = `dice-${digit}.png`;
+    //if score is not equal to 1
+    if (digit !== 1) {
+        //add the score 
+        console.log(digit)
+        roundScore += digit
+        console.log(roundScore)
+        document.getElementById('current-0').textContent = roundScore
+    } else {
+
+    }
+
 }
+init()
